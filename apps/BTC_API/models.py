@@ -27,9 +27,3 @@ class Create_bd(models.Model):
   class Meta:
     ordering = ["diler"]
 
-print(data['data']['1']['name'])
-print(data['data']['1']["date_added"])
-print(data['data']['1']["last_updated"])
-print(data['data']['1']["quote"]["USD"]["price"])
-print(data['data']['1']["quote"]["USD"]["volume_24h"])
-print(data['data']['1']["quote"]["USD"]["percent_change_24h"])
