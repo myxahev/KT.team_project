@@ -10,9 +10,9 @@ models.PositiveIntegerField()      # положительное целое зн�
 models.URLField(max_length=100)     # ссылка на web страницу длина ссылки ограничена xx символами
 models.DateField()                 # поле содержащие Дату"""
 
-class Create_bd(models.Model):
+class Btc(models.Model):
   """
-    таблица курса BTC.
+    table price BTC.
   """
   name = models.CharField(max_length=100)
   date_added = models.DateTimeField()
@@ -24,6 +24,4 @@ class Create_bd(models.Model):
   def __unicode__(self):
     return self.name
 
-  class Meta:
-    ordering = ["diler"]
 

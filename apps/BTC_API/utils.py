@@ -7,6 +7,7 @@ curl -H "X-CMC_PRO_API_KEY: d61bca4c-e9d3-40b9-8d82-abf9b057ffbd"
 """
 
 import requests
+from models import Btc
 # from django.core import serializers
 
 def response():
@@ -16,16 +17,16 @@ def response():
     }, params=(('id', '1'),))
     return response.json()
 
-def serialize_response(data):
-    return {
-        'name': data['data']['1']['name'],
-        'date_added': data['data']['1']["date_added"],
-        'last_updated': data['data']['1']["last_updated"],
-        'price': data['data']['1']["quote"]["USD"]["price"],
-        'volume_24h': data['data']['1']["quote"]["USD"]["volume_24h"],
-        'percent_change_24h': data['data']['1']["quote"]["USD"]["percent_change_24h"]
-    }
+def writing_to_the_database(data):
+    return Btc.objects.create(
+        name=data['data']['1']['name'],
+        date_added=data['data']['1']["date_added"],
+        last_updated=data['data']['1']["last_updated"],
+        price=data['data']['1']["quote"]["USD"]["price"],
+        volume_24h=data['data']['1']["quote"]["USD"]["volume_24h"],
+        percent_change_24h=data['data']['1']["quote"]["USD"]["percent_change_24h"]
+    )
 
-# print(serialize_response(response()))
+writing_to_the_database(response())
 
 
